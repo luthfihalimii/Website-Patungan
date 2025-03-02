@@ -25,11 +25,12 @@ class ProductSubscriptionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-credit-card';
 
+    protected static ?string $navigationGroup = 'Transactions';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
 
                 Forms\Components\Wizard::make([
 
@@ -50,31 +51,27 @@ class ProductSubscriptionResource extends Resource
                                 $price = $product ? $product->price_per_person : 0;
                                 $duration = $product ? $product->duration : 0;
 
-                                $set('price' $price);
-                                $set('duration' $duration);
+                                $set('price', $price);
+                                $set('duration', $duration);
 
                                 $tax = 0.11;
                                 $totalTaxAmount = $tax * $price;
 
                                 $totalAmount = $price + $totalTaxAmount;
-                                $set('total_amount', number_format($totalAmount, 0 , '', ''));
-                                $set('total_tax_amount', number_format($totalTaxAmount, 0 , '', ''));
+                                $set('total_amount', number_format($totalAmount, 0, '', ''));
+                                $set('total_tax_amount', number_format($totalTaxAmount, 0, '', ''));
 
                             })
-
-                            afterStateHydrated(function (callable $get, callable $set, $state){
+                           ->afterStateHydrated(function (callable $get, callable $set, $state) {
                                 $productId = $state;
                                 if ($productId) {
                                     $product = Product::find($productId);
                                     $price = $product ? $product->price : 0;
-
                                     $set('price', $price);
 
                                     $tax = 0.11;
                                     $totalTaxAmount = $tax * $price;
-
-                                    $totalAmount = $price + $totalTaxAmount;
-                                    $set('total_tax_amount', number_format($totalTaxAmount, 0 , '', ''));
+                                    $set('total_tax_amount', number_format($totalTaxAmount, 0, '', ''));
                                 }
                             }),
 
@@ -113,7 +110,7 @@ class ProductSubscriptionResource extends Resource
 
                             Forms\Components\TextInput::make('name')
                             ->required()
-                            ->length(255),
+                            ->maxLength(255),
 
                             Forms\Components\TextInput::make('phone')
                             ->required()
@@ -133,6 +130,10 @@ class ProductSubscriptionResource extends Resource
                         ->maxLength(255),
 
                         Forms\Components\TextInput::make('customer_bank_name')
+                        ->required()
+                        ->maxLength(255),
+
+                        Forms\Components\TextInput::make('customer_bank_account')
                         ->required()
                         ->maxLength(255),
 
@@ -167,9 +168,12 @@ class ProductSubscriptionResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Columns\ImageColumn::make('product.thumbnail')
+                Tables\Columns\ImageColumn::make('product.thumbnail'),
 
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('booking_trx_id')
                     ->searchable(),
 
                 Tables\Columns\IconColumn::make('is_paid')
@@ -183,15 +187,15 @@ class ProductSubscriptionResource extends Resource
             ->filters([
                 SelectFilter::make('product_id')
                     ->label('Product')
-                    ->relationship('product', 'name')
+                    ->relationship('product', 'name'),
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('Approve'),
-                ->label('Approve')
-                ->action(function (ProductSubscription $record) {
+                Tables\Actions\Action::make('approve')
+                    ->label('Approve')
+                    ->action(function (ProductSubscription $record) {
                     $record->is_paid = true;
                     $record->save();
 
@@ -238,3 +242,5 @@ class ProductSubscriptionResource extends Resource
             ]);
     }
 }
+
+

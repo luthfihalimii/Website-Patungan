@@ -38,7 +38,7 @@ class Product extends Model
         );
     }
 
-    public function group(): HasMany
+    public function groups(): HasMany
     {
         return $this->hasMany(SubscriptionGroup::class);
     }
