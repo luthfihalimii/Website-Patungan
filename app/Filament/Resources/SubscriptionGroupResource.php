@@ -4,6 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SubscriptionGroupResource\Pages;
 use App\Filament\Resources\SubscriptionGroupResource\RelationManagers;
+use App\Filament\Resources\SubscriptionGroupResource\RelationManagers\GroupMessagesRelationManager;
+use App\Filament\Resources\SubscriptionGroupResource\RelationManagers\GroupParticipantsRelationManager;
+use App\Models\GroupMessage;
 use App\Models\Product;
 use App\Models\SubscriptionGroup;
 use Filament\Forms;
@@ -76,7 +79,7 @@ class SubscriptionGroupResource extends Resource
             ->columns([
 
                 Tables\Columns\ImageColumn::make('product.thumbnail')
-                ->label('photo')
+                ->label('photo'),
 
                 Tables\Columns\TextColumn::make('productSubscription.booking_trx_id')
                 ->label('Booking ID')
@@ -88,7 +91,7 @@ class SubscriptionGroupResource extends Resource
 
                 Tables\Columns\TextColumn::make('partcipants_count'),
 
-                Tables\Columns\TextColumn::make('max_capacity'),,
+                Tables\Columns\TextColumn::make('max_capacity'),
 
                 Tables\Columns\IconColumn::make('is_full')
                 ->label('full')
@@ -118,6 +121,9 @@ class SubscriptionGroupResource extends Resource
     {
         return [
             //
+
+            GroupMessagesRelationManager::class,
+            GroupParticipantsRelationManager::class,
         ];
     }
 
