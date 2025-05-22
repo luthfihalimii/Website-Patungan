@@ -21,11 +21,12 @@ class BookingController extends Controller
 
     public function booking(Product $product)
     {
-        $tax = 0.11;
-        $totalTaxAmount = $tax * $product->price_per_person;
-        $grandTotalAMount = $product->price_per_person + $totalTaxAmount;
+        $taxPercent = 11.0;
+        $taxMult = $taxPercent / 100;
+        $totalTaxAmount = $taxMult * $product->price_per_person;
+        $grandTotalAmount = $product->price_per_person + $totalTaxAmount;
 
-        return view('booking.booking', compact('product', 'totalTaxAmount', 'grandTotalAmount'));
+        return view('booking.booking', compact('product', 'taxPercent', 'totalTaxAmount', 'grandTotalAmount'));
     }
 
     public function bookingStore(Product $product, StoreBookingRequest $request)
@@ -39,12 +40,12 @@ class BookingController extends Controller
         }
 
         return redirect()->route('front.payment');
-
     }
 
     public function payment()
     {
         $data = $this->bookingService->payment();
+        // dd($data);
         return view('booking.payment', $data);
     }
 
@@ -58,7 +59,6 @@ class BookingController extends Controller
         }
 
         return redirect()->route('front.index')->withErrors(['error' => 'Payment failed. Please try again']);
-
     }
 
     public function bookingFinished(ProductSubscription $productSubscription)
@@ -66,7 +66,8 @@ class BookingController extends Controller
         return view('booking.booking_finished', compact('productSubscription'));
     }
 
-    public function checkBooking() {
+    public function checkBooking()
+    {
         return view('booking.check_booking');
     }
 
@@ -78,11 +79,9 @@ class BookingController extends Controller
         $bookingData = $this->bookingService->getBookingDetailsWithGroupAndCapacity($validated);
 
         if (!$bookingData) {
-            return view ('booking.check_booking_details', $bookingData);
+            return view('booking.check_booking_details', $bookingData);
         }
 
         return redirect()->route('booking.check_booking')->withErrors(['error' => 'Transaction not found.']);
-
     }
-
 }
