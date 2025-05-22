@@ -41,7 +41,7 @@
                             </p>
                             <div class="flex items-center rounded-lg p-2 gap-1 bg-patungan-red/10">
                                 <img src="{{ asset('assets/images/icons/clock-red.svg') }}" class="w-6 flex shrink-0" alt="icon">
-                                <p class="font-bold leading-5 text-patungan-red">{{ $product->duration }} month</p>
+                                <p class="font-bold leading-5 text-patungan-red">{{ $product->duration }} month(s)</p>
                             </div>
                         </div>
                         <hr class="border-patungan-border">
@@ -56,7 +56,7 @@
                         <p class="font-semibold text-lg leading-[32px] text-patungan-grey">{{ $product->about }}</p>
                     </div>
                     <div class="flex flex-col gap-3">
-                        <h2 class="font-bold text-xl leading-[25px]">{{ $product->name }} Feature’s</h2>
+                        <h2 class="font-bold text-xl leading-[25px]">{{ $product->name }} Features</h2>
                         <div class="flex flex-col gap-4">
                             @foreach($product->keypoints as $kp)
                             <div class="flex items-center gap-2">
@@ -130,7 +130,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <p class="font-semibold text-lg leading-[22px] text-patungan-grey">Durasi</p>
-                    <p class="font-bold text-xl leading-[25px]">{{ $product->duration }}</p>
+                    <p class="font-bold text-xl leading-[25px]">{{ $product->duration }} month(s)</p>
                 </div>
                 <div class="flex items-center justify-between">
                     <p class="font-semibold text-lg leading-[22px] text-patungan-grey">Group Capacity</p>
