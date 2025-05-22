@@ -1,5 +1,3 @@
 @extends('layout.master')
 @section('content')
 @endsection
-
-<p>aowkoakwkaow kontol</p>

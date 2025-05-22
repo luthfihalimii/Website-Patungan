@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('duration');
             $table->unsignedBigInteger('capacity');
             $table->boolean('is_popular');
+            $table->string('slug')->unique();
             $table->softDeletes();
             $table->timestamps();
         });
