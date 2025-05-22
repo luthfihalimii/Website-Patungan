@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use FrontService;
-use Illuminate\Http\Request;
+use App\Services\FrontService;
 
 class FrontController extends Controller
 {
