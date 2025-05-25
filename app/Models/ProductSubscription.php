@@ -25,6 +25,22 @@ class ProductSubscription extends Model
         'duration',
         'price',
         'product_id',
+        'name',
+        'phone',
+        'sub_total',
+        'total_ppn',
+        'product_subscription_group_id',
+        'product_subscription_group_name',
+        'product_subscription_group_capacity',
+        'product_subscription_group_participants',
+        'product_subscription_group_messages',
+        'product_subscription_group_created_at',
+        'product_subscription_group_updated_at',
+        'product_subscription_group_deleted_at',
+        'product_subscription_group_is_active',
+        'product_subscription_group_is_deleted',
+        'product_subscription_group_is_archived',
+        'product_subscription_group_is_completed',
     ];
 
     public function product(): BelongsTo

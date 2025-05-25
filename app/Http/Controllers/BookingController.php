@@ -54,7 +54,7 @@ class BookingController extends Controller
         $validated = $request->validated();
         $bookingTransactionId = $this->bookingService->paymentStore($validated);
 
-        if (!$bookingTransactionId) {
+        if ($bookingTransactionId) {
             return redirect()->route('front.booking_finished', $bookingTransactionId);
         }
 
@@ -78,10 +78,12 @@ class BookingController extends Controller
 
         $bookingData = $this->bookingService->getBookingDetailsWithGroupAndCapacity($validated);
 
-        if (!$bookingData) {
+        // dd($bookingData);
+
+        if ($bookingData) {
             return view('booking.check_booking_details', $bookingData);
         }
 
-        return redirect()->route('booking.check_booking')->withErrors(['error' => 'Transaction not found.']);
+        return redirect()->route('front.check_booking')->withErrors(['error' => 'Transaction not found.']);
     }
 }

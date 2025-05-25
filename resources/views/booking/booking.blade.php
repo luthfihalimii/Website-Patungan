@@ -15,12 +15,12 @@
     <div class="flex gap-9 mb-20">
         <div id="Product-Info" class="product-card flex flex-col w-[368px] h-fit shrink-0 rounded-[32px] overflow-hidden bg-white">
             <div class="w-full h-[180px] flex shrink-0 bg-[#D9D9D9]">
-                <img src="{{ Storage::url($product->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnails">
+                <img src="{{ asset('assets/images/thumbnails/netflix.png')}}" class="w-full h-full object-cover" alt="thumbnails">
             </div>
             <div class="flex flex-col p-6 gap-6">
                 <div class="flex items-center gap-3">
                     <div class="w-[62px] h-[62px] flex shrink-0 rounded-xl overflow-hidden">
-                        <img src="{{ Storage::url($product->photo) }}" class="w-full h-full object-contain object-center" alt="icon">
+                        <img src="{{ asset('assets/images/logos/netflix.png')}}" class="w-full h-full object-contain object-center" alt="icon">
                     </div>
                     <div>
                         <p class="font-bold text-xl leading-[25px]">{{ $product->name }}</p>
@@ -36,7 +36,7 @@
                         <p class="font-extrabold text-2xl leading-[30px]">Rp {{ number_format($product->price_per_person, 0, '.', ',' ) }}</p>
                         <div class="flex items-center rounded-lg p-2 gap-1 bg-patungan-red/10">
                             <img src="{{ asset('assets/images/icons/clock-red.svg') }}" class="w-6 flex shrink-0" alt="icon">
-                            <p class="font-bold leading-5 text-patungan-red">{{ $product->duration }} month(s)</p>
+                            <p class="font-bold leading-5 text-patungan-red">{{ $product->duration }} month</p>
                         </div>
                     </div>
                     <hr class="border-patungan-border">
@@ -100,20 +100,20 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <p class="font-semibold text-lg leading-[22px] text-patungan-grey">Durasi</p>
-                            <p class="font-bold text-xl leading-[25px]">{{ $product->duration }} Month(s)</p>
+                            <p class="font-bold text-xl leading-[25px]">{{ $product->duration }} Month</p>
                         </div>
                         <div class="flex items-center justify-between">
                             <p class="font-semibold text-lg leading-[22px] text-patungan-grey">Group Capacity</p>
                             <p class="font-bold text-xl leading-[25px]">{{ $product->capacity }}</p>
                         </div>
                         <div class="flex items-center justify-between">
-                            <p class="font-semibold text-lg leading-[22px] text-patungan-grey">PPN {{ $taxPercent }}%</p>
+                            <p class="font-semibold text-lg leading-[22px] text-patungan-grey">PPN 11%</p>
                             <p class="font-bold text-xl leading-[25px]">Rp {{ number_format($totalTaxAmount, 0, '.', ',' ) }}</p>
                         </div>
                         <hr class="border-patungan-border">
                         <div class="flex items-center justify-between">
-                            <p class="font-semibold text-lg leading-[22px] text-patungan-grey">Total Price</p>
-                            <p class="font-bold text-xl leading-[25px text-patungan-red">Rp {{ number_format($grandTotalAmount, 0, '.', ',' ) }}</p>
+                            <p class="font-semibold text-lg leading-[22px] text-patungan-grey">Total Price  </p>
+                               <p class="font-bold text-xl leading-[25px] text-patungan-red">Rp {{ number_format($grandTotalAmount, 0, '.', ',' ) }}</p>
                         </div>
                     </div>
                     <button type="submit" class="flex items-center rounded-full h-[60px] px-9 w-full gap-[6px] bg-patungan-orange justify-center">

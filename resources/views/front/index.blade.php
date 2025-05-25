@@ -75,12 +75,12 @@
             @forelse ($newProducts as $itemNewProduct)
             <div class="product-card flex flex-col rounded-[32px] overflow-hidden bg-white">
                 <div class="w-full h-[180px] flex shrink-0 bg-[#D9D9D9]">
-                    <img src="{{ Storage::url($itemNewProduct->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnails">
+                    <img src="{{ asset('assets/images/thumbnails/netflix.png') }}" class="w-full h-full object-cover" alt="thumbnails">
                 </div>
                 <div class="flex flex-col p-6 gap-6">
                     <div class="flex items-center gap-3">
                         <div class="w-[62px] h-[62px] flex shrink-0 rounded-xl overflow-hidden">
-                            <img src="{{ Storage::url($itemNewProduct->photo) }}" class="w-full h-full object-contain object-center" alt="icon">
+                            <img src="{{ asset('assets/images/logos/netflix.png') }}" class="w-full h-full object-contain object-center" alt="icon">
                         </div>
                         <div>
                             <p class="font-bold text-xl leading-[25px]">{{ $itemNewProduct->name }}</p>

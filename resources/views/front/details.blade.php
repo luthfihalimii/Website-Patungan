@@ -14,13 +14,13 @@
         <div id="Details-Content" class="flex flex-col w-full max-w-[670px] shrink-0 gap-9">
             <div class="flex flex-col rounded-[32px] bg-white overflow-hidden">
                 <div class="flex w-full h-[200px] overflow-hidden">
-                    <img src="{{ Storage::url($product->thumbnail) }}" class="w-full h-full object-cover"
+                    <img src="{{ asset('assets/images/thumbnails/netflix.png') }}" class="w-full h-full object-cover"
                         alt="thumbnails">
                 </div>
                 <div class="flex flex-col p-8 gap-6">
                     <div class="flex items-center gap-3">
                         <div class="w-[62px] h-[62px] flex shrink-0 rounded-xl overflow-hidden">
-                            <img src="{{ Storage::url($product->photo) }}"
+                            <img src="{{ asset('assets/images/logos/netflix.png') }}"
                                 class="w-full h-full object-contain object-center" alt="icon">
                         </div>
                         <div>
