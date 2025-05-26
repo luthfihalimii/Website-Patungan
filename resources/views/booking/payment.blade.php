@@ -53,8 +53,9 @@
                 </div>
             </div>
         </div>
-            <form action="success.html" class="flex flex-col w-full rounded-[32px] overflow-hidden">
+            <form enctype="multipart/form-data" action="{{ route('front.payment_store', ['product' => $product->slug]) }}" method="POST" class="flex flex-col w-full rounded-[32px] overflow-hidden">
                 <div class="flex flex-col rounded-[32px] p-8 gap-8 overflow-hidden bg-white">
+                    @csrf
                     <div class="flex flex-col gap-5">
                         <h2 class="font-bold text-xl leading-[25px]">Select Bank Account</h2>
                         <div class="flex items-center rounded-full bg-patungan-bg-grey">

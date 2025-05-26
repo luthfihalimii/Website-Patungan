@@ -5,11 +5,11 @@
             <img src="{{asset('assets/images//backgrounds/Full-bg.svg')}}" class="w-full h-full object-cover" alt="background">
         </div>
         <main class="relative flex flex-col h-screen py-10 px-16 gap-8 items-center justify-between">
-            @csrf
             <a href="index.html">
                 <img src="{{asset('assets/images//logos/logo-white.svg')}}" class="h-10 flex shrink-0" alt="logo">
             </a>
             <form action="{{ route('front.check_booking_details') }}" method="POST" class="flex flex-col w-full max-w-[782px] items-center rounded-[64px] p-[52px] gap-8 bg-white">
+                @csrf
                 <div class="flex flex-col items-center text-center gap-6">
                     <img src="{{asset('assets/images//icons/receipt-text-orange-fill.svg')}}" class="w-[62px] flex shrink-0" alt="icon">
                     <h1 class="font-Grifter font-bold text-[32px] leading-[51px]">Lihat Pesanan Kamu</h1>
@@ -42,8 +42,8 @@
             <a href="{{ route('front.index')}}" class="font-bold text-xl leading-[25px] text-white">Back to Homepage > </a>
         </main>
     </div>
-
  
 @endsection
 @push('after-scripts')
 <script src="{{ asset('js/whatsapp-number.js') }}"></script>
+@endpush
