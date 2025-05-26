@@ -41,6 +41,10 @@ class ProductSubscription extends Model
         'product_subscription_group_is_deleted',
         'product_subscription_group_is_archived',
         'product_subscription_group_is_completed',
+        'participant_count',
+        'product_subscription_id',
+        'max_capacity',
+        'max_account',
     ];
 
     public function product(): BelongsTo
